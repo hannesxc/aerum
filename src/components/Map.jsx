@@ -13,12 +13,12 @@ function Map(){
       lat: data.location.coordinates[1],
       lng: data.location.coordinates[0]
     },
-    zoom: 10
+    zoom: 11
   }
 
   return (
-    <GoogleMapReact bootstrapURLKeys={{ key: mapsAPI }} defaultCenter={coords.center} defaultZoom={coords.zoom}>
-        <Pointer lat={data.location.coordinates[0]} lng={data.location.coordinates[1]} />
+    <GoogleMapReact bootstrapURLKeys={{ key: mapsAPI }} defaultCenter={{ lat: 0, lng: 0 }} center={coords.center} defaultZoom={coords.zoom}>
+        <Pointer lat={data.location.coordinates[1]} lng={data.location.coordinates[0]} />
     </GoogleMapReact>
   )
 }

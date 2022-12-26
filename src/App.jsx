@@ -92,7 +92,9 @@ function App() {
           />
           <TravelExploreIcon className='icon' sx={{ fontSize: 40 }} onClick={onSearch} />
         </div>
-        <InformationCard />
+        <div className='card'>
+          <InformationCard />
+        </div>
         <Footer />
       </div>
     </GlobalContext.Provider>

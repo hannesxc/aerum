@@ -22,6 +22,42 @@ html, body {
     margin: 10px;
 }
 
+.card {
+    display: flex;
+    justify-content: center;
+}
+
+.itemCard {
+    display: flex;
+    flex-direction: row;
+}
+
+.map {
+    width: 600px;
+    height: 400px;
+}
+
+.pointer {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: lightcoral;
+}
+
+.weatherIcon {
+    width: 50px;
+    height: 50px;
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    width: 600px;
+}
+
 .icon {
     margin-left: 20px;
     cursor: pointer;
