@@ -13,7 +13,7 @@ function InformationCard() {
   console.log(data)
 
   return (
-    <Card className='itemCard'>
+    <Card className='itemCard flex'>
       { Object.keys(data).length ? 
         <>
           <div className='map'>
@@ -32,15 +32,14 @@ function InformationCard() {
               </div>
             </CardContent>
             <CardActions>
-              <Button size="small" onClick={() => setOwnLoc(true)}>Use My Location</Button>
-              <Button size="small">More Details</Button>
+              <Button size="medium" onClick={() => setOwnLoc(true)}>Use My Location</Button>
+              <Button size="medium" href='https://iqair.com/'>More Details</Button>
             </CardActions>
           </div>
         </> : 
         <>
-          <h2>Please enter a location.</h2>
           <CardActions>
-            <Button size="small" onClick={() => setOwnLoc(true)}>Use My Location</Button>
+            <Button size="medium" onClick={() => setOwnLoc(true)}>Use My Location</Button>
           </CardActions> 
         </> }
     </Card>

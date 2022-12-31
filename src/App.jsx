@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Header from './components/Header'
+import Aerum from './assets/aerum.png'
 import InformationCard from './components/InformationCard'
 import Footer from './components/Footer'
-import TextField from '@mui/material/TextField'
 import TravelExploreIcon from '@mui/icons-material/TravelExplore'
-import Autocomplete from '@mui/material/Autocomplete'
-import Box from '@mui/material/Box'
 import { GlobalContext } from './contexts/GlobalContext'
+import Input from './components/Input'
 
 function App() {
 
@@ -26,31 +24,51 @@ function App() {
   const [ cities, setCities ] = useState([])
 
   useEffect(() => {
-    fetch(`http://api.airvisual.com/v2/countries?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
-      setCountries(res.data)
-    }).catch(err => console.log(err))
+    fetch(`https://api.airvisual.com/v2/countries?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
+      if (res.status === 'success') {
+        setCountries(res.data)
+      } else {
+        alert(`An error occured, please try again. Reason: ${res.data.message}`)
+      }
+    }).catch(err => {})
   }, [])
 
   const fetchStates = (country) => {
     setCountry(country)
-    fetch(`http://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
-      setStates(res.data)
-    }).catch(err => console.log(err))
+    fetch(`https://api.airvisual.com/v2/states?country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
+      if (res.status === 'success') {
+        setStates(res.data)
+      } else {
+        alert(`An error occured, please try again. Reason: ${res.data.message}`)
+      }
+    }).catch(err => {})
   }
 
   const fetchCities = (statee) => {
     setStatee(statee)
-    fetch(`http://api.airvisual.com/v2/cities?state=${statee}&country=${country}&key=${apiKey}`).then(res => res.json()).then(res => {
-      setCities(res.data)
-    }).catch(err => console.log(err))
+    fetch(`https://api.airvisual.com/v2/cities?state=${statee}&country=${country}&key=${apiKey}`).then(res => res.json()).then(res => {
+      if (res.status === 'success') {
+        setCities(res.data)
+      } else {
+        alert(`An error occured, please try again. Reason: ${res.data.message}`)
+      }
+    }).catch(err => {})
+  }
+
+  const clearInputs = () => {
+    setCountry('')
+    setStatee('')
+    setStates([])
+    setCity('')
+    setCities([])
   }
 
   const onSearch = () => {
     if (ownLoc) {
-      fetch(`http://api.airvisual.com/v2/nearest_city?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
+      fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
     } else if (country && statee && city) {
-      console.log("Done!")
-      fetch(`http://api.airvisual.com/v2/city?city=${city}&state=${statee}&country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
+      fetch(`https://api.airvisual.com/v2/city?city=${city}&state=${statee}&country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
+      clearInputs()
     } else {
       alert("Please fill the remaining fields!")
     }
@@ -62,37 +80,16 @@ function App() {
   }
 
   return (
-    <GlobalContext.Provider value={{ data, ownLoc, onSearch, setOwnLoc }}>
+    <GlobalContext.Provider value={{ data, country, countries, cities, city, states, statee, setOwnLoc }}>
       <div className='main'>
-        <Header />
-        <div className='inputBox'>
-          <Autocomplete className='selectBox' disableClearable={true} options={countries} autoHighlight getOptionLabel={(option) => option.country} renderOption={(props, option) => (
-            <Box component="li" {...props}>
-              {option.country}
-            </Box>
-            )} renderInput={(params) => (
-              <TextField {...params} label="Country" />
-            )} onChange={(event, value) => fetchStates(value.country)}
-          />
-          <Autocomplete className='selectBox' disableClearable={true} options={states} autoHighlight getOptionLabel={(option) => option.state} renderOption={(props, option) => (
-            <Box component="li" {...props}>
-              {option.state}
-            </Box>
-            )} renderInput={(params) => (
-              <TextField {...params} label="State" />
-            )} onChange={(event, value) => fetchCities(value.state)}
-          />
-          <Autocomplete className='selectBox' disableClearable={true} options={cities} autoHighlight getOptionLabel={(option) => option.city} renderOption={(props, option) => (
-            <Box component="li" {...props}>
-              {option.city}
-            </Box>
-            )} renderInput={(params) => (
-              <TextField {...params} label="City" />
-            )} onChange={(event, value) => setCity(value.city)}
-          />
-          <TravelExploreIcon className='icon' sx={{ fontSize: 40 }} onClick={onSearch} />
+        <div className='header flex'>
+          <a href='/aerum'><img src={Aerum} alt='header image' /></a>
+          <div className='inputBox'>
+            <Input />
+            <TravelExploreIcon className='icon' sx={{ fontSize: 40 }} onClick={onSearch} />
+          </div>
         </div>
-        <div className='card'>
+        <div className='card flex'>
           <InformationCard />
         </div>
         <Footer />

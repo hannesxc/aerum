@@ -1,34 +1,45 @@
 html, body {
+    background-color: #effafa;
     margin: 0;
     height: 100%;
 }
 
 .main {
     display: flex;
-    place-content: center;
-    height: 100%;
     flex-direction: column;
+    max-width: 1920px;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    background-color: #282953;
+    height: 70vh;
 }
 
 .inputBox {
     display: flex;
+    width: 85%;
+    max-width: 1920px;
     margin: 40px;
+    padding: 60px;
     justify-content: space-evenly;
     align-items: center;
-}
-
-.selectBox {
-    width: 30%;
-    margin: 10px;
+    color: #f9ffd6;
 }
 
 .card {
-    display: flex;
-    justify-content: center;
+    height: 500px;
 }
 
 .itemCard {
-    display: flex;
+    min-width: 600px;
+    min-height: 300px;
     flex-direction: row;
 }
 
