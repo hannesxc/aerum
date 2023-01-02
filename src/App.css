@@ -48,6 +48,12 @@ html, body {
     height: 400px;
 }
 
+.subhead {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
 .pointer {
     width: 12px;
     height: 12px;
@@ -66,7 +72,10 @@ html, body {
 }
 
 .content {
-    width: 600px;
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .icon {
@@ -76,4 +85,8 @@ html, body {
 
 .icon:hover {
     opacity: 0.6;
+}
+
+@media (width < 1440px) {
+
 }

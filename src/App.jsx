@@ -80,7 +80,7 @@ function App() {
   }
 
   return (
-    <GlobalContext.Provider value={{ data, country, countries, cities, city, states, statee, setOwnLoc }}>
+    <GlobalContext.Provider value={{ data, country, countries, cities, city, setCity, states, statee, fetchStates, fetchCities, setOwnLoc }}>
       <div className='main'>
         <div className='header flex'>
           <a href='/aerum'><img src={Aerum} alt='header image' /></a>
@@ -89,7 +89,7 @@ function App() {
             <TravelExploreIcon className='icon' sx={{ fontSize: 40 }} onClick={onSearch} />
           </div>
         </div>
-        <div className='card flex'>
+        <div className='flex card'>
           <InformationCard />
         </div>
         <Footer />
