@@ -31,21 +31,21 @@ function InformationCard() {
   console.log(data)
 
   return (
-    <Card className='itemCard flex'>
+    <>
       { Object.keys(data).length ? 
-        <>
+        <div className='itemCard flex'>
           <div className='map'>
             <Map />
           </div>
-          <div className='content'>
+          <Card sx={{ width: '100%' }}>
             <CardContent>
               <div className='heading'>
                 <h2>{data.city}, {data.state}, {data.country}</h2>
                 <h2>{data.current.weather.tp}&#8451;</h2>
               </div>
-              <p>
-                Air Quality Index (AQI): <CustomSlider props={ data.current.pollution.aqius } />
-              </p>
+              <div>
+                Air Quality Index (AQI): <CustomSlider aqi={ data.current.pollution.aqius } />
+              </div>
               <div className='subhead'>
                 <p>Humidity: {data.current.weather.hu}%</p>
                 <p>Wind:&ensp;
@@ -62,14 +62,14 @@ function InformationCard() {
               <Button size="medium" onClick={() => setOwnLoc(true)}>Use My Location</Button>
               <Button size="medium" href='https://iqair.com/'>More Details</Button>
             </CardActions>
-          </div>
-        </> : 
-        <>
+          </Card>
+        </div> : 
+        <Card className='flex' sx={{ width: 340, height: 200 }}>
           <CardActions>
             <Button size="medium" onClick={() => setOwnLoc(true)}>Use My Location</Button>
           </CardActions> 
-        </> }
-    </Card>
+        </Card> }
+    </>
   )
 }
 

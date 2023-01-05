@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&display=swap');
+
 html, body {
+    font-family: 'Manrope', sans-serif;
     background-color: #effafa;
     margin: 0;
-    height: 100%;
 }
 
 .main {
     display: flex;
     flex-direction: column;
-    max-width: 1920px;
+    height: 100vh;
 }
 
 .flex {
@@ -19,7 +21,8 @@ html, body {
 
 .header {
     background-color: #282953;
-    height: 70vh;
+    height: 700px;
+    flex-shrink: 0;
 }
 
 .inputBox {
@@ -34,18 +37,19 @@ html, body {
 }
 
 .card {
-    height: 500px;
+    margin: 40px 0;
+    flex-grow: 1;
 }
 
 .itemCard {
-    min-width: 600px;
-    min-height: 300px;
-    flex-direction: row;
+    width: 95%;
+    max-width: 1000px;
+    gap: 10px;
 }
 
 .map {
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    height: 440px;
 }
 
 .subhead {
@@ -67,6 +71,7 @@ html, body {
 }
 
 .heading {
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
 }
@@ -78,6 +83,12 @@ html, body {
     flex-direction: column;
 }
 
+.footer {
+    padding: 20px;
+    background-color: #282953;
+    color: #effafa;
+}
+
 .icon {
     margin-left: 20px;
     cursor: pointer;
@@ -85,8 +96,4 @@ html, body {
 
 .icon:hover {
     opacity: 0.6;
-}
-
-@media (width < 1440px) {
-
 }

@@ -25,18 +25,18 @@ const pollution = [
   },
 ]
 
-function CustomSlider(props) {
+function CustomSlider({ aqi }) {
 
   const [ dangerColor, setDangerColor ] = useState('')
 
   useEffect(() => {
-    if (props.props < 40) {
+    if (aqi < 40) {
       setDangerColor('#00c853')
-    } else if (props.props < 100) {
+    } else if (aqi < 100) {
       setDangerColor('#ffd600')
-    } else if (props.props < 180) {
+    } else if (aqi < 180) {
       setDangerColor(`#ff6d00`)
-    } else if (props.props < 300) {
+    } else if (aqi < 300) {
       setDangerColor('#616161')
     } else {
       setDangerColor(`#ff1744`)
@@ -44,10 +44,10 @@ function CustomSlider(props) {
   }, [])
 
   return (
-    <Box sx={{ width: 700, margin: '30px' }}>
+    <Box sx={{ width: '95%', minWidth: 700, margin: '30px' }}>
       <Slider
-        sx={{ '.Mui-disabled, .MuiSlider-track': { color: dangerColor } }}
-        defaultValue={props.props}
+        sx={{ '.Mui-disabled, .MuiSlider-track': { color: dangerColor }}}
+        defaultValue={aqi}
         step={50}
         max={500}
         marks={pollution}
