@@ -30,7 +30,6 @@ html, body {
     width: 85%;
     max-width: 1920px;
     margin: 40px;
-    padding: 60px;
     justify-content: space-evenly;
     align-items: center;
     color: #f9ffd6;
@@ -74,13 +73,6 @@ html, body {
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
-}
-
-.content {
-    width: 800px;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
 }
 
 .footer {

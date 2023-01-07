@@ -64,7 +64,7 @@ function InformationCard() {
             </CardActions>
           </Card>
         </div> : 
-        <Card className='flex' sx={{ width: 340, height: 200 }}>
+        <Card className='flex' sx={{ width: 300, height: 200 }}>
           <CardActions>
             <Button size="medium" onClick={() => setOwnLoc(true)}>Use My Location</Button>
           </CardActions> 
