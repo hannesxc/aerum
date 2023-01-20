@@ -41,13 +41,13 @@ function CustomSlider({ aqi }) {
     } else {
       setDangerColor(`#ff1744`)
     }
-  }, [])
+  }, [aqi])
 
   return (
     <Box sx={{ width: '95%', minWidth: 700, margin: '30px' }}>
       <Slider
         sx={{ '.Mui-disabled, .MuiSlider-track': { color: dangerColor }}}
-        defaultValue={aqi}
+        value={aqi}
         step={50}
         max={500}
         marks={pollution}

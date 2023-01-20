@@ -28,8 +28,6 @@ function InformationCard() {
     }
   }
 
-  console.log(data)
-
   return (
     <>
       { Object.keys(data).length ? 
@@ -44,7 +42,7 @@ function InformationCard() {
                 <h2>{data.current.weather.tp}&#8451;</h2>
               </div>
               <div>
-                Air Quality Index (AQI): <CustomSlider aqi={ data.current.pollution.aqius } />
+                Air Quality Index (AQI): <CustomSlider aqi={ data.current.pollution.aqicn } />
               </div>
               <div className='subhead'>
                 <p>Humidity: {data.current.weather.hu}%</p>
@@ -54,7 +52,7 @@ function InformationCard() {
                 </p>
               </div>
               <div className='subhead'>
-                <p>Polluting Agent: {checkUnits(data.current.pollution.mainus)}</p>
+                <p>Polluting Agent: {checkUnits(data.current.pollution.maincn)}</p>
                 <Image />
               </div>
             </CardContent>

@@ -65,9 +65,21 @@ function App() {
 
   const onSearch = () => {
     if (ownLoc) {
-      fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
+      fetch(`https://api.airvisual.com/v2/nearest_city?key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
+        if (res.status === 'success') {
+          setData(res.data)
+        } else {
+          alert(`An error occured, please try again. Reason: ${res.data.message}`)
+        }
+      }).catch(err => {})
     } else if (country && statee && city) {
-      fetch(`https://api.airvisual.com/v2/city?city=${city}&state=${statee}&country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => setData(res.data)).catch(err => console.log(err))
+      fetch(`https://api.airvisual.com/v2/city?city=${city}&state=${statee}&country=${country}&key=${apiKey}`, requestOptions).then(res => res.json()).then(res => {
+        if (res.status === 'success') {
+          setData(res.data)
+        } else {
+          alert(`An error occured, please try again. Reason: ${res.data.message}`)
+        }
+      }).catch(err => {})
       clearInputs()
     } else {
       alert("Please fill the remaining fields!")
